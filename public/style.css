@@ -1,0 +1,338 @@
+html {
+  scroll-behavior: smooth; /* Memberikan efek pergeseran halus saat tombol diklik */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #061e29; /* Color Palette 1 */
+  color: #f3f4f4; /* Color Palette 4 */
+  overflow-x: hidden;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f3f4f4;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #5f9598; /* Color Palette 3 */
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f3f4f4;
+}
+
+/* Hero Section Menggunakan CSS Grid 3 Kolom */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  align-items: center;
+  padding: 0 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 100px);
+  position: relative;
+}
+
+/* Kolom Kiri */
+.hero-left {
+  position: relative;
+  z-index: 2;
+  padding-right: 20px;
+}
+
+.line-accent {
+  width: 60px;
+  height: 3px;
+  background-color: #5f9598; /* Color Palette 3 */
+  margin-bottom: 25px;
+}
+
+.hero-left h1 {
+  font-size: 3.2rem;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #f3f4f4;
+}
+
+.hero-left p {
+  color: rgba(243, 244, 244, 0.7);
+  font-size: 0.95rem;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+/* Tombol Panah (Disesuaikan agar <a> melingkar sempurna) */
+.scroll-btn {
+  width: 50px;
+  height: 50px;
+  background-color: #5f9598; /* Color Palette 3 */
+  color: #061e29; /* Color Palette 1 */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 0.3s,
+    background-color 0.3s;
+}
+
+.scroll-btn:hover {
+  transform: translateY(5px);
+  background-color: #f3f4f4;
+}
+
+/* Kolom Tengah (Foto Profil) */
+.hero-center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-center img {
+  max-width: 200%;
+  max-height: 90vh;
+  margin-bottom: -40px;
+  transform: translateX(0%) translateX(0px);
+  filter: drop-shadow(0px 10px 30px rgba(0, 0, 0, 0.6));
+}
+
+/* Kolom Kanan */
+.hero-right {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  padding-left: 20px;
+}
+
+.info-block {
+  border-bottom: 1px solid rgba(95, 149, 152, 0.2);
+  padding-bottom: 20px;
+}
+
+.info-block:last-child {
+  border-bottom: none;
+}
+
+.info-block h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #5f9598; /* Color Palette 3 */
+}
+
+.info-block p {
+  font-size: 0.85rem;
+  color: rgba(243, 244, 244, 0.75);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.link-btn {
+  color: #f3f4f4;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.link-btn:hover {
+  color: #5f9598;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  text-decoration: none;
+}
+
+.social-icons i {
+  color: #5f9598; /* Color Palette 3 */
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.social-icons i:hover {
+  color: #f3f4f4;
+}
+
+/* ==========================================
+   SECTION BARU (ABOUT STATS & SKILLS)
+   ========================================== */
+
+/* Styling Umum Section Tag */
+.section-tag {
+  color: #5f9598; /* Color Palette 3 */
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Section About Stats Utama (Penuh 100% Lebar Layar) */
+.about-stats {
+  width: 100%;
+  background-color: #1d546d; /* Color Palette 2 */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 40px 0 60px 0;
+}
+
+.about-stats .section-tag {
+  color: #f3f4f4; /* Agar kontras di atas latar belakang #1D546D */
+  opacity: 0.8;
+}
+
+/* Kontainer Dalam (Penjaga Batas Lebar Teks) */
+.about-stats-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 70px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats-left {
+  max-width: 600px;
+}
+
+.stats-left h2 {
+  font-size: 2.2rem;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #f3f4f4;
+}
+
+.stats-left p {
+  color: rgba(243, 244, 244, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.stats-right {
+  display: flex;
+  gap: 50px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #f3f4f4;
+  line-height: 1;
+}
+
+.stat-label {
+  color: rgba(243, 244, 244, 0.8);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+/* Section Skills */
+.skills-section {
+  max-width: 1300px;
+  margin: 60px auto 100px;
+  padding: 0 60px;
+}
+
+.skills-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #f3f4f4;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.skill-card {
+  background-color: rgba(
+    29,
+    84,
+    109,
+    0.2
+  ); /* Sentuhan transparan dari Color Palette 2 */
+  border: 1px solid rgba(95, 149, 152, 0.3); /* Color Palette 3 dengan transparansi */
+  border-radius: 12px;
+  padding: 30px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: #5f9598;
+  background-color: rgba(29, 84, 109, 0.4);
+}
+
+.skill-card i {
+  font-size: 2.5rem;
+  color: #5f9598; /* Color Palette 3 */
+  margin-bottom: 20px;
+}
+
+.skill-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #f3f4f4;
+}
+
+.skill-card p {
+  color: rgba(243, 244, 244, 0.7);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
