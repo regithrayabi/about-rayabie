@@ -116,7 +116,6 @@
 
       <!-- Kontainer kosong yang akan diisi otomatis lewat JavaScript fetch -->
       <div class="skills-grid" id="skills-container">
-        <!-- Loading state sementara -->
         <p style="color: rgba(243, 244, 244, 0.7); font-style: italic">
           Memuat data dari backend server...
         </p>
@@ -197,7 +196,7 @@
 
     <!-- Script Gabungan: Fetch API Backend Routing & IntersectionObserver -->
     <script>
-      // 1. Mengambil data secara dinamis dari Backend Routing Express.js (/api/skills)
+      // 1. Mengambil data skill secara dinamis dari Backend Routing Express.js (/api/skills)
       fetch("/api/skills")
         .then((response) => response.json())
         .then((skills) => {
@@ -210,7 +209,7 @@
               <div class="skill-card">
                 <i class="${skill.icon}"></i>
                 <h3>${skill.name}</h3>
-                <p>Data diambil secara dinamis melalui Endpoint API Backend Express.js.</p>
+                <p>${skill.desc}</p>
               </div>
             `;
           });
