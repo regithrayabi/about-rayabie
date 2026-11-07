@@ -109,36 +109,17 @@
       </div>
     </section>
 
-    <!-- Section Skills / Keahlian -->
+    <!-- Section Skills / Keahlian (Dimuat Dinamis dari Backend Routing) -->
     <section class="skills-section" id="skills">
       <span class="section-tag">/ MY SKILLS</span>
       <h2>Keahlian & Logika Pemrograman</h2>
 
-      <div class="skills-grid">
-        <div class="skill-card">
-          <i class="fab fa-js-square"></i>
-          <h3>JavaScript & Node.js</h3>
-          <p>
-            Pengembangan backend modular, REST API, native standard libraries,
-            dan manajemen paket npm.
-          </p>
-        </div>
-        <div class="skill-card">
-          <i class="fas fa-server"></i>
-          <h3>Express.js & DB</h3>
-          <p>
-            Routing server statis & dinamis, arsitektur socket networking, serta
-            pengolahan MySQL.
-          </p>
-        </div>
-        <div class="skill-card">
-          <i class="fab fa-html5"></i>
-          <h3>Frontend Layout</h3>
-          <p>
-            Penguasaan responsive layout dengan Flexbox, CSS Grid, serta
-            penataan hierarki visual.
-          </p>
-        </div>
+      <!-- Kontainer kosong yang akan diisi otomatis lewat JavaScript fetch -->
+      <div class="skills-grid" id="skills-container">
+        <!-- Loading state sementara -->
+        <p style="color: rgba(243, 244, 244, 0.7); font-style: italic">
+          Memuat data dari backend server...
+        </p>
       </div>
     </section>
 
@@ -214,8 +195,33 @@
       </div>
     </footer>
 
-    <!-- Script IntersectionObserver untuk indikator menu aktif -->
+    <!-- Script Gabungan: Fetch API Backend Routing & IntersectionObserver -->
     <script>
+      // 1. Mengambil data secara dinamis dari Backend Routing Express.js (/api/skills)
+      fetch("/api/skills")
+        .then((response) => response.json())
+        .then((skills) => {
+          const container = document.getElementById("skills-container");
+          container.innerHTML = ""; // Kosongkan teks loading
+
+          // Looping data JSON dari server untuk merender kartu skill secara otomatis
+          skills.forEach((skill) => {
+            container.innerHTML += `
+              <div class="skill-card">
+                <i class="${skill.icon}"></i>
+                <h3>${skill.name}</h3>
+                <p>Data diambil secara dinamis melalui Endpoint API Backend Express.js.</p>
+              </div>
+            `;
+          });
+        })
+        .catch((error) => {
+          console.error("Gagal mengambil data dari server:", error);
+          document.getElementById("skills-container").innerHTML =
+            '<p style="color: #ff6b6b;">Gagal memuat data skill dari backend.</p>';
+        });
+
+      // 2. Script IntersectionObserver untuk indikator menu aktif di Navbar
       const sections = document.querySelectorAll("header[id], section[id]");
       const navLinks = document.querySelectorAll(".nav-links a");
 
