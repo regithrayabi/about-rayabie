@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth; /* Memberikan efek pergeseran halus saat tombol diklik */
+  scroll-padding-top: 100px; /* Mencegah konten terpotong oleh navbar saat di-klik */
 }
 
 * {
@@ -20,8 +21,12 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 25px 60px;
-  position: relative;
-  z-index: 10;
+
+  /* Perubahan untuk membuat header menempel */
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #061e29; /* Warna disamakan dengan background body agar teks yang digeser tidak tumpang tindih */
 }
 
 .logo {
@@ -41,10 +46,26 @@ nav {
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
+  position: relative; /* Dibutuhkan untuk efek garis bawah aktif */
+  padding-bottom: 5px;
 }
 
-.nav-links a:hover {
+/* Teks terang Off-White untuk status hover atau section aktif */
+.nav-links a:hover,
+.nav-links a.active {
   color: #f3f4f4;
+}
+
+/* Garis bawah sebagai indikator tambahan saat aktif */
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f3f4f4;
+  border-radius: 2px;
 }
 
 /* Hero Section Menggunakan CSS Grid 3 Kolom */
@@ -335,4 +356,116 @@ nav {
   color: rgba(243, 244, 244, 0.7);
   font-size: 0.88rem;
   line-height: 1.6;
+}
+
+/* ==========================================
+   SECTION PORTFOLIO
+   ========================================== */
+.portfolio-section {
+  max-width: 1300px;
+  margin: 0 auto 100px;
+  padding: 0 60px;
+}
+
+.portfolio-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #f3f4f4;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.portfolio-card {
+  background-color: #1d546d; /* Color Palette 2 */
+  border: 1px solid rgba(95, 149, 152, 0.2);
+  border-radius: 12px;
+  padding: 35px 30px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-color: #5f9598;
+}
+
+.portfolio-icon {
+  font-size: 2.5rem;
+  color: #5f9598;
+  margin-bottom: 20px;
+}
+
+.portfolio-card h3 {
+  font-size: 1.3rem;
+  color: #f3f4f4;
+  margin-bottom: 15px;
+}
+
+.portfolio-card p {
+  color: rgba(243, 244, 244, 0.75);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1; /* Mendorong tombol link agar selalu berada di bawah */
+}
+
+.portfolio-link {
+  color: #5f9598;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+  align-self: flex-start;
+}
+
+.portfolio-link:hover {
+  color: #f3f4f4;
+}
+
+/* Responsive Grid untuk Tablet/Mobile */
+@media (max-width: 900px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+footer {
+  background-color: #04141c; /* Lebih gelap dari background utama (#061E29) untuk pemisah visual */
+  border-top: 1px solid rgba(95, 149, 152, 0.15);
+  padding: 40px 60px;
+  margin-top: 40px;
+}
+
+.footer-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-content p {
+  color: rgba(243, 244, 244, 0.5);
+  font-size: 0.9rem;
 }

@@ -18,12 +18,7 @@
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#skills">Portfolio</a></li>
-        <li>
-          <a href="#"
-            >Pages <i class="fa fa-chevron-down" style="font-size: 0.7rem"></i
-          ></a>
-        </li>
+        <li><a href="#portfolio">Portfolio</a></li>
       </ul>
     </nav>
 
@@ -146,5 +141,106 @@
         </div>
       </div>
     </section>
+
+    <!-- Section Portfolio -->
+    <section class="portfolio-section" id="portfolio">
+      <span class="section-tag">/ PORTFOLIO</span>
+      <h2>Karya & Proyek Terbaru</h2>
+
+      <div class="portfolio-grid">
+        <!-- Portfolio 1: NPM Package -->
+        <div class="portfolio-card">
+          <div class="portfolio-icon"><i class="fab fa-npm"></i></div>
+          <h3>pelari-kalcer</h3>
+          <p>
+            Package NPM open-source untuk mengkalkulasi pace lari dan
+            memprediksi estimasi waktu finish lintas jarak tempuh.
+          </p>
+          <a
+            href="https://github.com/regithrayabi"
+            target="_blank"
+            class="portfolio-link"
+            >View Project &rarr;</a
+          >
+        </div>
+
+        <!-- Portfolio 2: Socket Server -->
+        <div class="portfolio-card">
+          <div class="portfolio-icon"><i class="fas fa-network-wired"></i></div>
+          <h3>Multi-Client Socket</h3>
+          <p>
+            Eksperimen arsitektur server multi-client menggunakan socket
+            programming dengan Python di jaringan lokal.
+          </p>
+          <a
+            href="https://github.com/regithrayabi"
+            target="_blank"
+            class="portfolio-link"
+            >View Project &rarr;</a
+          >
+        </div>
+
+        <!-- Portfolio 3: Web Portal -->
+        <div class="portfolio-card">
+          <div class="portfolio-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Web Portal MABIM</h3>
+          <p>
+            Pengembangan antarmuka dan restyling portal web resmi untuk
+            inisiatif orientasi mahasiswa (MABIM) Universitas Nusa Putra.
+          </p>
+          <a
+            href="https://github.com/regithrayabi"
+            target="_blank"
+            class="portfolio-link"
+            >View Project &rarr;</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="logo">&lt;/&gt; rayabie</div>
+        <p>&copy; 2026 Regith Rayabi. All rights reserved.</p>
+        <div class="social-icons">
+          <a href="https://github.com/regithrayabi" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/regithrayabi" target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Script IntersectionObserver untuk indikator menu aktif -->
+    <script>
+      const sections = document.querySelectorAll("header[id], section[id]");
+      const navLinks = document.querySelectorAll(".nav-links a");
+
+      const observerOptions = {
+        root: null,
+        rootMargin: "-100px 0px -40% 0px",
+        threshold: 0,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.getAttribute("id");
+
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${currentId}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach((section) => observer.observe(section));
+    </script>
   </body>
 </html>
